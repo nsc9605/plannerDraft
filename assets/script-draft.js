@@ -16,7 +16,7 @@ $(document).ready(function () {
   $("#currentDay").text(today.format("dddd MMMM Do YYYY, h:mm a"));
 
   var hours = today.hours();
-  // console.log(hours);
+  console.log(hours);
 });
 
 // Set variables for time/parent/current hour to refer to when change
@@ -27,9 +27,8 @@ var currentHour = parseInt(moment().format("H"));
 
 // set variable for current hour for color coding purposes
 let index = 0;
-debugger;
 
-// console.log(timeBlock);
+console.log(timeBlock);
 
 // Function to argue past/present/future time and what to log and when.
 timeBlock.each(function () {
@@ -37,7 +36,7 @@ timeBlock.each(function () {
     var parent = $(this).parents(".row");
     var timeId = parseInt(parent.attr("id"));
     var currentHour = parseInt(moment().format("H"));
-    // console.log(timeId);
+    console.log(timeId);
 
     if (timeId < currentHour) {
       $(this).addClass("past");
@@ -69,5 +68,6 @@ $(".saveBtn").on("click", function() {
 
 // Send to localStorage
 localStorage.setItem(hourTask, userText);
-// console.log(localStorage.getItem(hourTask, userText))
+
+console.log(localStorage.getItem(hourTask, userText))
 })
