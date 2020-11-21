@@ -49,8 +49,9 @@ timeBlock.each(function () {
     $(this).addClass("future");
 
     $(this).val(localStorage.getItem(parent.attr("id")));
-  }}
-);
+  }
+  $(this).val(localStorage.getItem(parent.attr("id")));
+})
 
 
 
@@ -60,7 +61,7 @@ function saveBtn() {
 
 
 $(".saveBtn").on("click", function() {
-    // $(".save").on("click", saveBtn)
+    $(".save").on("click", saveBtn)
     // the save button we are clicking on
     //  console.log($(this))
    
@@ -75,16 +76,11 @@ $(".saveBtn").on("click", function() {
     //is this value correct?
     console.log(hourTask)
 
-    // use jQuery to find this is text content
-    // <- need to get the text content from here
     
-// don't do this yet until you know we're doing the above correctly
-// localStorage.setItem(timeId);
+// Send to localStorage
+localStorage.setItem(timeId);
 localStorage.setItem(hourTask, userText);
-// localStorage.setItem(hourTask,);
-// send it to localStorage
-// localStorage.setItem(hourTask, text)
-   
+
 })
 }
 // function hourTask(text) {
@@ -98,10 +94,3 @@ localStorage.setItem(hourTask, userText);
 // function renderTasks ()
 
 
-// save to local storage
-
-
-// $("button").on("click", save);
-// function save() {
-// console.log($(this).siblings(textarea).val());
-// localStorage.setItem("text", JSON.stringify(text))}
