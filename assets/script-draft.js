@@ -1,3 +1,4 @@
+
 // Declaration of elements/classes
 const rows = $(".row");
 const hours = $(".hour");
@@ -6,10 +7,8 @@ const present = $(".present");
 const future = $(".future");
 const timeBlock = $(".time-block");
 const saveButton = $(".saveBtn");
-const description = $(".description");
 const hourTask = $("id");
-const userText = $(".hour-task-text");
-
+const userText = $(".hour-task");
 
 // Set current time in header when application is opened
 $(document).ready(function () {
@@ -17,24 +16,28 @@ $(document).ready(function () {
   $("#currentDay").text(today.format("dddd MMMM Do YYYY, h:mm a"));
 
   var hours = today.hours();
-  console.log(hours);
+  // console.log(hours);
 });
 
+// Set variables for time/parent/current hour to refer to when change
+// color throughout the day.
 var parent = $(this).parents(".row");
 var timeId = parseInt(parent.attr("id"));
 var currentHour = parseInt(moment().format("H"));
 
 // set variable for current hour for color coding purposes
 let index = 0;
+debugger;
 
-console.log(timeBlock);
+// console.log(timeBlock);
 
+// Function to argue past/present/future time and what to log and when.
 timeBlock.each(function () {
 
     var parent = $(this).parents(".row");
     var timeId = parseInt(parent.attr("id"));
     var currentHour = parseInt(moment().format("H"));
-    console.log(timeId);
+    // console.log(timeId);
 
     if (timeId < currentHour) {
       $(this).addClass("past");
@@ -51,46 +54,20 @@ timeBlock.each(function () {
     $(this).val(localStorage.getItem(parent.attr("id")));
   }
   $(this).val(localStorage.getItem(parent.attr("id")));
+  // console.log($(this).val());localStorage.getItem(parent.attr("id"));
 })
 
-
-
-
-function saveBtn() {
-  console.log($(this));
-
-
+// Set .on("click") function and tell when/where to store information
 $(".saveBtn").on("click", function() {
-    $(".save").on("click", saveBtn)
-    // the save button we are clicking on
-    //  console.log($(this))
-   
-    var userText = $(this).siblings(".time-block").val();
-    console.log(userText);
+ 
+  var userText = $(this).siblings(".time-block").val();
+  // console.log(userText);
+  
+  var hourTask = $(this).parents(".row").attr("id");
+  //is this value correct?
+  // console.log(hourTask)
 
-    // if(!localStorage.getItem(userText)) {
-    //    localStorage.setItem(userText, JSON.stringify(userText));
-    // }
-    // use jQuery to find this is hour
-    var hourTask = $(this).parents(".row").attr("id");
-    //is this value correct?
-    console.log(hourTask)
-
-    
 // Send to localStorage
-localStorage.setItem(timeId);
 localStorage.setItem(hourTask, userText);
-
+// console.log(localStorage.getItem(hourTask, userText))
 })
-}
-// function hourTask(text) {
-
-// }
-// function saveBtn(event) {
-//     console.log(event.target);
-//     localStorage.setItem("text", text);
-// }
-// renderLastRegistered to keep information
-// function renderTasks ()
-
-
